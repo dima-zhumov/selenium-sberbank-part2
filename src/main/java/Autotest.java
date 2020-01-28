@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.Locatable;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -48,33 +47,59 @@ public class Autotest {
         element=webDriver.findElement(By.xpath("//button[text()='Оформить']"));
         Actions actions = new Actions(webDriver);
         actions.moveToElement(element).build().perform();
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
 
 
-        webDriver.findElement(By.xpath("//input[@placeholder='Surname']"))
-                .sendKeys("Surname");
-        webDriver.findElement(By.xpath("//input[@placeholder='Name']"))
-                .sendKeys("Name");
-        webDriver.findElement(By.xpath("//input[contains(@id,'birthDate_')]"))
-                .sendKeys("09.10.1996");
+        WebElement surname = webDriver.findElement(By.xpath("//input[@placeholder='Surname']"));
+        surname.sendKeys("Surname");
 
-        webDriver.findElement(By.xpath("//input[@id='person_lastName']"))
-                .sendKeys("Фамилия");
-        webDriver.findElement(By.xpath("//input[@id='person_firstName']"))
-                .sendKeys("Имя");
-        webDriver.findElement(By.xpath("//input[@id='person_middleName']"))
-                .sendKeys("Отчество");
-        webDriver.findElement(By.xpath("//input[@id='person_birthDate']"))
-                .sendKeys("09.10.1996");
+        WebElement name = webDriver.findElement(By.xpath("//input[@placeholder='Name']"));
+        name.sendKeys("Name");
 
-        webDriver.findElement(By.xpath("//input[@id='passportSeries']"))
-                .sendKeys("1111");
-        webDriver.findElement(By.xpath("//input[@id='passportNumber']"))
-                .sendKeys("111111");
-        webDriver.findElement(By.xpath("//input[@id='documentDate']"))
-                .sendKeys("09.10.2016");
-        webDriver.findElement(By.xpath("//input[@id='documentIssue']"))
-                .sendKeys("Кем выдан");
+        WebElement birthDate = webDriver.findElement(By.xpath("//input[contains(@id,'birthDate_')]"));
+        birthDate.sendKeys("09.10.1996");
+
+        WebElement personLastName = webDriver.findElement(By.xpath("//input[@id='person_lastName']"));
+        personLastName.sendKeys(Keys.CONTROL + "a");
+        personLastName.sendKeys("Фамилия");
+
+        WebElement personFirstName = webDriver.findElement(By.xpath("//input[@id='person_firstName']"));
+        personFirstName.sendKeys("Имя");
+
+        WebElement personMiddleName = webDriver.findElement(By.xpath("//input[@id='person_middleName']"));
+        personMiddleName.sendKeys("Отчество");
+
+        WebElement personBirthDate = webDriver.findElement(By.xpath("//input[@id='person_birthDate']"));
+        personBirthDate.sendKeys("09.10.1996");
+
+        WebElement passportSeries = webDriver.findElement(By.xpath("//input[@id='passportSeries']"));
+        passportSeries.sendKeys(Keys.CONTROL + "a");
+        passportSeries.sendKeys("1111");
+
+        WebElement passportNumber = webDriver.findElement(By.xpath("//input[@id='passportNumber']"));
+        passportNumber.sendKeys("111111");
+
+        WebElement documentDate = webDriver.findElement(By.xpath("//input[@id='documentDate']"));
+        documentDate.sendKeys("09.10.2016");
+
+        WebElement documentIssue = webDriver.findElement(By.xpath("//input[@id='documentIssue']"));
+        documentIssue.sendKeys(Keys.CONTROL + "a");
+        documentIssue.sendKeys("Кем выдан");
+
+
+        Assert.assertEquals("Ошибка. Фамилия не совпадает.",surname.getAttribute("value"),"Surname");
+        Assert.assertEquals("Ошибка. Имя не совпадает.",name.getAttribute("value"),"Name");
+        Assert.assertEquals("Ошибка. Дата рождения не совпадает.",birthDate.getAttribute("value"),"09.10.1996");
+        Assert.assertEquals("Ошибка. Фамилия не совпадает.",personLastName.getAttribute("value"),"Фамилия");
+        Assert.assertEquals("Ошибка. Имя не совпадает.",personFirstName.getAttribute("value"),"Имя");
+        Assert.assertEquals("Ошибка. Отчество не совпадает.",personMiddleName.getAttribute("value"),"Отчество");
+        Assert.assertEquals("Ошибка. Дата рождения не совпадает.",personBirthDate.getAttribute("value"),"09.10.1996");
+        Assert.assertEquals("Ошибка. Серия паспорта не совпадает.",passportSeries.getAttribute("value"),"1111");
+        Assert.assertEquals("Ошибка. Номер паспорта не совпадает.",passportNumber.getAttribute("value"),"111111");
+        Assert.assertEquals("Ошибка. Дата выдачи паспорта не совпадает.",documentDate.getAttribute("value"),"09.10.2016");
+        Assert.assertEquals("Ошибка. Кем выдан паспорт не совпадает.",documentIssue.getAttribute("value"),"Кем выдан");
+
 
         webDriver.findElement(By.xpath("//button[contains(text(),'Продолжить')]")).click();
 
