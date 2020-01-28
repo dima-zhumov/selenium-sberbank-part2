@@ -91,10 +91,10 @@ public class Autotest {
         Assert.assertEquals("Ошибка. Фамилия не совпадает.",surname.getAttribute("value"),"Surname");
         Assert.assertEquals("Ошибка. Имя не совпадает.",name.getAttribute("value"),"Name");
         Assert.assertEquals("Ошибка. Дата рождения не совпадает.",birthDate.getAttribute("value"),"09.10.1996");
-        Assert.assertEquals("Ошибка. Фамилия не совпадает.",personLastName.getAttribute("value"),"Фамилия");
-        Assert.assertEquals("Ошибка. Имя не совпадает.",personFirstName.getAttribute("value"),"Имя");
-        Assert.assertEquals("Ошибка. Отчество не совпадает.",personMiddleName.getAttribute("value"),"Отчество");
-        Assert.assertEquals("Ошибка. Дата рождения не совпадает.",personBirthDate.getAttribute("value"),"09.10.1996");
+        Assert.assertEquals("Ошибка. Фамилия страхователя не совпадает.",personLastName.getAttribute("value"),"Фамилия");
+        Assert.assertEquals("Ошибка. Имя страхователя не совпадает.",personFirstName.getAttribute("value"),"Имя");
+        Assert.assertEquals("Ошибка. Отчество страхователя не совпадает.",personMiddleName.getAttribute("value"),"Отчество");
+        Assert.assertEquals("Ошибка. Дата рождения страхователя не совпадает.",personBirthDate.getAttribute("value"),"09.10.1996");
         Assert.assertEquals("Ошибка. Серия паспорта не совпадает.",passportSeries.getAttribute("value"),"1111");
         Assert.assertEquals("Ошибка. Номер паспорта не совпадает.",passportNumber.getAttribute("value"),"111111");
         Assert.assertEquals("Ошибка. Дата выдачи паспорта не совпадает.",documentDate.getAttribute("value"),"09.10.2016");
